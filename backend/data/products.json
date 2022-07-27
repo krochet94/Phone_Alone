@@ -1,0 +1,326 @@
+[
+  {
+    "name": "Huawei P30 Pro",
+    "brand": "Huawei",
+    "price": 930,
+    "specs": {
+      "processor": "HiSilicon Kirin 980",
+      "memory": 8,
+      "storage": 256,
+      "display": 6.47,
+      "camera": {
+        "front": 32,
+        "rear": 40
+      },
+      "os": "Android 9.0 (Pie)"
+    },
+    "description": "The Huawei P30 Pro is a smartphone powered by a HiSilicon Kirin 980 chipset with 8 GB of RAM and 128/256/512 GB of expandable internal storage. It has a 4,200 mAh non-removable battery and comes with Android 9.0 (Pie) with EMUI 9.1 skin. It features a 6.47-inch OLED display and a 32 MP selfie camera on the screen's dewdrop notch. At the back is a quad-camera setup with a 40 MP main camera, 20 MP ultra-wide camera, an 8 MP telephoto camera, and a time-of-flight camera for depth sensing.The Huawei P30 Pro is available in the following colors: Aurora, Amber Sunrise, Breathing Crystal, Black, and Pearl White.",
+    "rating": 4.6,
+    "images": [
+      {
+        "public_id": "Phone_Alone/Products/huawei-p30-pro-1_gwtsx0",
+        "url": "https://res.cloudinary.com/krochet94/image/upload/v1654252277/Phone_Alone/Products/huawei-p30-pro-1_gwtsx0.jpg"
+      },
+      {
+        "public_id": "Phone_Alone/Products/huawei-p30-pro-2_opcihx",
+        "url": "https://res.cloudinary.com/krochet94/image/upload/v1654252278/Phone_Alone/Products/huawei-p30-pro-2_opcihx.jpg"
+      }
+    ],
+    "seller": "Alexa Rhodes",
+    "stock": 0,
+    "numOfReviews": 29,
+    "reviews": []
+  },
+  {
+    "name": "Infinix Hot 11s",
+    "brand": "Infinix",
+    "price": 130,
+    "specs": {
+      "processor": "MediaTek Helio G88",
+      "memory": 4,
+      "storage": 64,
+      "display": 6.78,
+      "camera": {
+        "front": 8,
+        "rear": 50
+      },
+      "os": "Android 11"
+    },
+    "description": "Infinix Hot 11s, the budget gaming smartphone under $130 price tier, is one of the most sought-after mobile phones right now. Powered with a MediaTek Helio G88 processor, 4GB of RAM, and coupled with a 6.78″ IPS Screen Display, your mobile gaming experience using this smooth Infinix Hot 11s will be worthwhile. Not only that, this gaming smartphone is equipped with a heavy-duty 5000mAh battery, letting you play your favorite mobile game for long, extended hours. Being a gaming smartphone isn’t only the selling point of the Infinix Hot 11s. It also boasts a quad-cam with a whopping 50MP main camera and an 8MP secondary front cam. The Infinix Hot 11s also supports 64GB internal storage with a dedicated microSDXC slot for storage expansion. Infinix Hot 11s has a rear-mounted fingerprint, accelerometer, proximity, and gyroscope sensors that run smoothly on Android 11 upon purchase and has its custom user interface from Infinix, the XOS 7.6.",
+    "rating": 3.4,
+    "images": [
+      {
+        "public_id": "Phone_Alone/Products/infinix-hot-11s_tdkrfi",
+        "url": "https://res.cloudinary.com/krochet94/image/upload/v1654252278/Phone_Alone/Products/infinix-hot-11s_tdkrfi.jpg"
+      }
+    ],
+    "seller": "Leana Lovings",
+    "stock": 21,
+    "numOfReviews": 15,
+    "reviews": []
+  },
+  {
+    "name": "Apple iPhone 13 Pro",
+    "brand": "Apple",
+    "price": 1170,
+    "specs": {
+      "processor": "Apple A15 Bionic",
+      "memory": 8,
+      "storage": 128,
+      "display": 6.1,
+      "camera": {
+        "front": 12,
+        "rear": 12
+      },
+      "os": "iOS 15"
+    },
+    "description": "The Apple iPhone 13 Pro is one of the mid-sized smartphones perfect for those who have average grip handles. It has a 6.1-inch screen size, with 1170×2532 resolution and 460-pixel density, just the right specs if you want a handy smartphone. Display quality is superb, thanks to the Super Retina XDR OLED with up to 1200 nits of brightness. It is also capable of displaying a vibrant HDR10 color display. All of these, topped with scratch-resistant ceramic glass and Corning Gorilla Glass for protection. When it comes to internal specifications, the Apple iPhone 13 Pro runs the same Apple A15 Bionic chipset as the other iPhone 13 models. What’s different is that the GPU used on the iPhone 13 Pro is the Apple 5-core graphics GPU, which results in a smoother video playback and gaming experience. It also has 6GB RAM and the option to choose from four internal memory options: 128GB, 256GB, 512GB, and 1TB. As for the cameras, the iPhone 13 pro has three 12MP cameras on the rear and a TOF 3D LiDar Scanner. The secondary camera is composed of a 12MP camera and an SL 3D scanner as a depth and biometrics sensor. Both the front and rear cameras can produce videos with 4K resolution.",
+    "rating": 4.4,
+    "images": [
+      {
+        "public_id": "Phone_Alone/Products/apple-iphone-13-pro-1_npqjoe",
+        "url": "https://res.cloudinary.com/krochet94/image/upload/v1654252277/Phone_Alone/Products/apple-iphone-13-pro-1_npqjoe.jpg"
+      },
+      {
+        "public_id": "Phone_Alone/Products/apple-iphone-13-pro-2_qal6ab",
+        "url": "https://res.cloudinary.com/krochet94/image/upload/v1654252277/Phone_Alone/Products/apple-iphone-13-pro-2_qal6ab.jpg"
+      }
+    ],
+    "seller": "Melody Marks",
+    "stock": 5,
+    "numOfReviews": 45,
+    "reviews": []
+  },
+  {
+    "name": "Samsung Galaxy S21 Ultra 5G",
+    "brand": "Samsung",
+    "price": 1280,
+    "specs": {
+      "processor": "Exynos 2100",
+      "memory": 12,
+      "storage": 256,
+      "display": 6.8,
+      "camera": {
+        "front": 40,
+        "rear": 108
+      },
+      "os": "Android 11"
+    },
+    "description": "The Samsung Galaxy S21 Ultra 5G has a powerful Exynos 2100 chipset coupled with Mali-G78 MP14 GPU. A maximum of 16GB RAM can be purchased along with up to 512GB of internal storage. The Samsung Galaxy S21 Ultra 5G has a Dynamic AMOLED screen with a 120Hz refresh rate for smooth application navigation and browsing. This smartphone’s brightness can reach up to 1500 nits at its peak, which you can achieve when using the smartphone outdoors. The Samsung Galaxy S21 Ultra has 515 PPI pixel density and can play HDR10+ videos in 1440×3200 pixel resolution. Its main camera includes a 108MP primary lens with autofocus function and image stabilization, a 10MP periscope telephoto lens with 240mm focal length with up to 10x optical zoom and 100x digital zoom, another 10MP telephoto with up to 3x optical zoom, and a 12MP ultra-wide angle lens. A 40MP front camera tops off the list and supports autofocus function. The Samsung Galaxy S21 Ultra 5G is powered by a 5000 mAh battery that is capable of wireless charging. It also has a pre-installed One UI 3.1 running on Android 11 OS. ",
+    "rating": 4.5,
+    "images": [
+      {
+        "public_id": "Phone_Alone/Products/samsung-galaxy-s21-ultra-5g_vb9wkz",
+        "url": "https://res.cloudinary.com/krochet94/image/upload/v1654252278/Phone_Alone/Products/samsung-galaxy-s21-ultra-5g_vb9wkz.jpg"
+      }
+    ],
+    "seller": "Rae Lil Black",
+    "stock": 12,
+    "numOfReviews": 17,
+    "reviews": []
+  },
+  {
+    "name": "Xiaomi 11T Pro",
+    "brand": "Xiaomi",
+    "price": 510,
+    "specs": {
+      "processor": "Qualcomm Snapdragon 888 5G",
+      "memory": 8,
+      "storage": 256,
+      "display": 6.67,
+      "camera": {
+        "front": 16,
+        "rear": 108
+      },
+      "os": "Android 11"
+    },
+    "description": "Xiaomi 11T Pro, the best mid-range smartphone available from Xiaomi, runs with a Qualcomm Snapdragon 888 5G chipset and an octa-core Kryo 680 CPU. It has two available models when it comes to RAM (8GB or 12GB) and internal memory (128GB or 256GB). Display resolution is superb and astounding with 1080x2400 pixels with an OLED HDR+ 6.67-inch screen and is protected by Corning Gorilla Glass Victus. The Xiaomi 11T Pro also has a 108MP main camera and 16MP front cam and up to 8K video resolution. It can last up to 92 hours of standby idle time, thanks to its 5000mAh non-removable lithium polymer battery. One of the notable features of the Xiaomi 11T Pro is its sound hardware specifications. This smartphone's speaker is optimized and tuned by Harman Kardon, one of the top brands when it comes to audio peripherals. The Xiaomi 11T Pro operates with Android 11 and is pre-installed with MIUI 12.5 UI.",
+    "rating": 3.7,
+    "images": [
+      {
+        "public_id": "Phone_Alone/Products/xiaomi-11t-pro_y7a3re",
+        "url": "https://res.cloudinary.com/krochet94/image/upload/v1654252278/Phone_Alone/Products/xiaomi-11t-pro_y7a3re.jpg"
+      }
+    ],
+    "seller": "Eva Elfie",
+    "stock": 9,
+    "numOfReviews": 105,
+    "reviews": []
+  },
+  {
+    "name": "Vivo X70",
+    "brand": "Vivo",
+    "price": 640,
+    "specs": {
+      "processor": "MediaTek Dimensity 1200 5G",
+      "memory": 12,
+      "storage": 256,
+      "display": 6.56,
+      "camera": {
+        "front": 32,
+        "rear": 40
+      },
+      "os": "Android 11"
+    },
+    "description": "Considered one of the most promising camera phones of 2021, the Vivo X70 produces quality imagery and photographs, thanks to its partnership with German lens maker Zeiss. Vivo X70 exhibits a 40MP main camera and two more others, enhanced with Zeiss optics and Zeiss T* lens coating that can produce DSLR-like images. The secondary camera on the front side is equipped with a whopping 32MP selfie resolution. With these great photos that you can make, it is also significant that the Vivo X70 is partnered with a vibrant AMOLED 1080P, 6.56″ display with a 120Hz refresh rate for a smooth mobile experience. Being a Vivo flagship smartphone, the Vivo X70 houses a MediaTek MT6893 Dimensity 1200 5G processor that can efficiently run heavy-usage applications. The latest smartphone from Vivo boasts an astounding 12GB of RAM and 256GB of internal storage. The Vivo X70 runs stock Android 11 OS and Origin UI 1.0. Battery capacity is at 4400mAh and supported by 44W fast charging. ",
+    "rating": 4,
+    "images": [
+      {
+        "public_id": "Phone_Alone/Products/vivo-x70_dqzr6z",
+        "url": "https://res.cloudinary.com/krochet94/image/upload/v1654252278/Phone_Alone/Products/vivo-x70_dqzr6z.jpg"
+      }
+    ],
+    "seller": "Riley Reid",
+    "stock": 22,
+    "numOfReviews": 67,
+    "reviews": []
+  },
+  {
+    "name": "OPPO Reno 10x",
+    "brand": "Oppo",
+    "price": 840,
+    "specs": {
+      "processor": "Qualcomm Snapdragon 855",
+      "memory": 6,
+      "storage": 128,
+      "display": 6.6,
+      "camera": {
+        "front": 16,
+        "rear": 48
+      },
+      "os": "Android 9.0 (Pie)"
+    },
+    "description": "The OPPO Reno 10x is an Android smartphone running on a Qualcomm Snapdragon 855 octa-core chipset with Adreno 640 GPU. It comes with either 6 or 8 GB of RAM and 128 or 256 GB of expandable internal storage. Powering the device is a 4,065 mAh lithium-polymer non-removable battery with VOOC Flash Charge. It runs on Android 9.0 (Pie) with ColorOS 6 skin. The phone features a triple camera setup featuring a 48MP main sensor, a 13MP telephoto camera with 5x optical zoom, and an 8MP ultrawide camera. The secondary camera is a motorized pop-up 16MP camera. The OPPO Reno 10x is available in the following colors: Fog Sea Green, Extreme Night Black, and Mist Pink.",
+    "rating": 4.2,
+    "images": [
+      {
+        "public_id": "Phone_Alone/Products/oppo-reno-10x-1_htyaww",
+        "url": "https://res.cloudinary.com/krochet94/image/upload/v1654252277/Phone_Alone/Products/oppo-reno-10x-1_htyaww.jpg"
+      },
+      {
+        "public_id": "Phone_Alone/Products/oppo-reno-10x-2_vzjjec",
+        "url": "https://res.cloudinary.com/krochet94/image/upload/v1654252278/Phone_Alone/Products/oppo-reno-10x-2_vzjjec.jpg"
+      }
+    ],
+    "seller": "Mia Khalifa",
+    "stock": 19,
+    "numOfReviews": 121,
+    "reviews": []
+  },
+  {
+    "name": "Realme GT Master Edition",
+    "brand": "Realme",
+    "price": 350,
+    "specs": {
+      "processor": "Qualcomm Snapdragon 778G 5G",
+      "memory": 8,
+      "storage": 128,
+      "display": 6.43,
+      "camera": {
+        "front": 32,
+        "rear": 64
+      },
+      "os": "Android 11"
+    },
+    "description": "The Realme GT Master Edition is the flagship carrier smartphone of Realme for 2021. Starting with what's inside, the Realme GT Master Edition's swift and smooth user experience should be credited to its Qualcomm SM7325 Snapdragon 778G 5G processor. Not only that, it runs on an Adreno 642L GPU, which makes it perfect for gaming or movie watching. You can choose from either 6GB or 8GB RAM and 128GB or 256GB ROM depending on your personal use or preference. Let's talk about the physical features of the Realme GT Master Edition. Starting with the Super AMOLED screen display with a 120Hz refresh rate for a smooth experience. The screen size of 6.43″ and 85% screen-to-body ratio and up to 409-pixel density makes the Realme GT Master Edition a truly irresistible offer. A triple camera setup with 64MP primary lens with HDR and panoramic features is located at the rear. It also boasts a 32MP secondary camera at the front. And by the way, the Realme GT Master Edition is 5G-enabled resulting in faster mobile Internet connections. The battery installed is 4300 mAh in capacity and can last up to 114 hours of standby. ",
+    "rating": 3.6,
+    "images": [
+      {
+        "public_id": "Phone_Alone/Products/realme-gt-master-edition_zanjgv",
+        "url": "https://res.cloudinary.com/krochet94/image/upload/v1654252278/Phone_Alone/Products/realme-gt-master-edition_zanjgv.jpg"
+      }
+    ],
+    "seller": "Lexi Lore",
+    "stock": 4,
+    "numOfReviews": 91,
+    "reviews": []
+  },
+  {
+    "name": "Realme 9 5G Speed",
+    "brand": "Realme",
+    "price": 255,
+    "specs": {
+      "processor": "Qualcomm Snapdragon 778G 5G",
+      "memory": 6,
+      "storage": 128,
+      "display": 6.6,
+      "camera": {
+        "front": 16,
+        "rear": 48
+      },
+      "os": "Android 11"
+    },
+    "description": "The Realme 9 5G Speed Edition is an upgraded version of the Realme 9 5G with slightly superior specs, built for those who want blazing fast connectivity and gameplay. At the heart of the Realme 9 5G SE is the powerful Qualcomm Snapdragon 778G 5G processor with Kryo 670 CPU and Adreno 642L GPU. With a choice of 6GB or 8GB of RAM alongside 128GB of expandable storage, the phone is the ideal partner of mobile gamers and power users everywhere. The Realme 9 5G Speed Edition has a slightly bigger screen at 6.6 inches compared to the Realme 9 5G, as well as slightly better resolution of 1080 x 2400 pixels. It has the same 90Hz refresh rate and 480 nits of typical brightness that can reach 600 nits in high brightness mode. The screen is protected by ultra tough Panda Glass. Mobile photography has never been easier with the Realme 9 5G SE, with its triple camera setup featuring a 48 MP wide lens supported by two 2 MP macro and depth sensors. A 16 MP selfie camera completes the camera lineup. A 5G-capable phone, the Realme 9 5G Speed Edition truly lives up to its name. Nevertheless, it can still support 4G, 3G and GSM if 5G is not available. It’s powered by a robust 5000 mAh Li-Po battery capable of 30W fast charging that can achieve 50% charge in half an hour. The Realme 9 5G Speed Edition comes in two color variations: Starry Glow and Azure Glow.",
+    "rating": 3.7,
+    "images": [
+      {
+        "public_id": "Phone_Alone/Products/realme-9-5g-speed-1_enpbtr",
+        "url": "https://res.cloudinary.com/krochet94/image/upload/v1655212595/Phone_Alone/Products/realme-9-5g-speed-1_enpbtr.jpg"
+      }
+    ],
+    "seller": "Sasha Grey",
+    "stock": 2,
+    "numOfReviews": 15,
+    "reviews": []
+  },
+  {
+    "name": "Apple iPhone SE",
+    "brand": "Apple",
+    "price": 530,
+    "specs": {
+      "processor": "Apple A15 Bionic",
+      "memory": 3,
+      "storage": 64,
+      "display": 4.7,
+      "camera": {
+        "front": 7,
+        "rear": 12
+      },
+      "os": "iOS 15.3"
+    },
+    "description": "The Apple iPhone SE 2022 is a special edition smartphone scheduled for release on March 2022, combining affordability with the high-quality specs that Apple is renowned for. The iPhone SE 2022 features the Apple A15 Bionic hexa-core processor, Apple GPU, and 3GB of RAM. Buyers have a choice of internal storage size, namely, 64GB, 128GB and 256GB. The phone runs on the latest iOS 15.3 and is powered by a 2,200mAh lithium-ion battery with 18-watt fast charging. Apple claims that the phone can achieve 50% battery charge in 30 minutes. When it comes to the display, the Apple iPhone SE 2022 comes with a 4.7-inch Retina IPS LCD screen with 625 nits typical brightness and a 750 x 1334 pixels resolution. Ion-strengthened glass keeps the display safe from accidental damage. The iPhone SE 2022 features a 12MP wide angle lens as its primary camera, with an aperture of f/1.8. At the front is a solitary 7MP selfie camera with an aperture of f/2.2. A 5G-capable smartphone, the Apple iPhone SE 2022 also supports 4G/LTE and 3G. Just like other phones, the iPhone SE 2022 comes with support for Bluetooth 5.0, Wi-Fi 802.11, USB 2.0 and GPS. The phone doesn’t have an audio jack nor an FM radio. ",
+    "rating": 3.9,
+    "images": [
+      {
+        "public_id": "Phone_Alone/Products/apple-iphone-se-1_hlxj8b",
+        "url": "https://res.cloudinary.com/krochet94/image/upload/v1655212595/Phone_Alone/Products/apple-iphone-se-1_hlxj8b.jpg"
+      },
+      {
+        "public_id": "Phone_Alone/Products/apple-iphone-se-2_d2115n",
+        "url": "https://res.cloudinary.com/krochet94/image/upload/v1655212595/Phone_Alone/Products/apple-iphone-se-2_d2115n.jpg"
+      }
+    ],
+    "seller": "Sunny Leony",
+    "stock": 1,
+    "numOfReviews": 35,
+    "reviews": []
+  },
+  {
+    "name": "Poco X4 GT",
+    "brand": "Poco",
+    "price": 350,
+    "specs": {
+      "processor": "MediaTek Dimensity 8100",
+      "memory": 8,
+      "storage": 128,
+      "display": 6.6,
+      "camera": {
+        "front": 16,
+        "rear": 64
+      },
+      "os": "Android 12"
+    },
+    "description": "The POCO X4 GT is a mid-range smartphone that features a 6.6-inch FHD+ display with a 144Hz screen refresh rate, 64MP + 8MP + 2MP triple rear cameras, and a 16MP selfie camera. It runs on a MediaTek Dimensity 8100 chipset with 8GB of RAM, LiquidCool Technology 2.0, Android 12 OS, and MIUI 13 for POCO software. There's also a side-mounted fingerprint scanner, 5G connectivity, WiFi 6, infrared remote control function, stereo speakers, and either 128GB or 256GB of storage. A large 5,080mAh battery powers the device with support for 67W ultra-fast charging technology.",
+    "rating": 5,
+    "images": [
+      {
+        "public_id": "Phone_Alone/Products/f9m4hjgv9axu6ec8fuxi",
+        "url": "https://res.cloudinary.com/krochet94/image/upload/v1656779748/Phone_Alone/Products/f9m4hjgv9axu6ec8fuxi.jpg"
+      }
+    ],
+    "seller": "Marsha May",
+    "stock": 3,
+    "numOfReviews": 0,
+    "reviews": []
+  }
+]

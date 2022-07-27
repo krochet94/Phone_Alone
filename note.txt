@@ -1,0 +1,230 @@
+deployment:
+mongodb cloud: user: admin-Phone_Alone, password: mlH6e80rBcwran1E
+
+mongodb+srv://admin-Phone_Alone:mlH6e80rBcwran1E@phonealone.t8t01sc.mongodb.net/test
+mongodb+srv://admin-Phone_Alone:mlH6e80rBcwran1E@phonealone.t8t01sc.mongodb.net/Phone_Alone?retryWrites=true&w=majority
+
+npm i express dotenv mongoose
+npm i nodemon --save-dev
+
+npm i bcryptjs jsonwebtoken validator nodemailer cookie-parser body-parser
+
+
+
+mongoDB CLI,
+postman,
+cloudinary,
+mailtrap.io
+
+
+product sample:
+{
+    "itemPrice" : 27990,
+    "taxPrice":  1400,
+    "shippingPrice": 350,
+    "totalPrice" : 29740,
+    "orderItems" : [
+        {
+            "name": "Xiaomi 11T Pro",
+            "product": "6299e83aabe2a08f217d3546",
+            "price" : 27990,
+            "image" : "https://res.cloudinary.com/krochet94/image/upload/1654252278/Phone_Alone/Products/xiaomi-11t-pro_y7a3re.jpg",
+            "quantity" : 1
+        }
+    ],
+    "shippingInfo":{
+        "address": "Salunayan, Midsayap",
+        "city": "North Cotabato",
+        "phoneNo": 639173722337,
+        "postalCode": 9410,
+        "country" : "Philippines"
+    },
+    "paymentInfo": {
+        "id": "67rhnddfgsjhiuen674",
+        "status": "succeeded"
+    }
+}
+
+
+
+
+
+frontend:
+cd frontend
+npx create-react-app .
+npm i axios react-alert react-alert-template-basic react-bootstrap react-helmet react-redux redux redux-thunk redux-devtools-extension react-router-dom
+npm i bootstrap rc-slider
+
+
+Sandbox account:
+sb-3x347315239444@business.example.com
+
+Client ID:
+AYAYMOOnzNfBsGwwoAR_r6WIQOjLHA48vtUCqgxT1SDt_x-jlGeRbXG68y8nQR_UiDkYbYc-S09rEVJb
+
+Secret Key:
+EOIgqpn9TVtFT5RgPKLVWMgjoqQMvXE8KliBI498U2le27aRt8p4B-J-_JQYwPiWWqSXm3PZxbrcKrKL
+
+
+
+Business Account:
+Email:
+sb-3x347315239444@business.example.com
+Password:
+^C=Z0&zg
+
+Personal Account:
+Email:
+sb-drvzo17535108@personal.example.com
+Password:
+5o0.g7RR
+
+<script src="https://www.paypal.com/sdk/js?client-id=AYAYMOOnzNfBsGwwoAR_r6WIQOjLHA48vtUCqgxT1SDt_x-jlGeRbXG68y8nQR_UiDkYbYc-S09rEVJb"></script>
+
+
+stripe: cc# 4000002760003184
+
+function setUserRatings() {
+    const stars = document.querySelectorAll(".star");
+    stars.forEach((star, index) => {
+      star.starValue = index + 1;
+      ["click", "mouseover", "mouseout"].forEach(function(e) {
+        star.addEventListener(e, showRatings);
+      });
+    });
+    function showRatings(e) {
+      stars.forEach((star, index) => {
+        if (e.type === "click") {
+          if (index < this.starValue) {
+            star.classList.add("orange");
+          } else {
+            star.classList.remove("orange");
+          }
+        }
+        if (e.type === "mouseover") {
+          if (index < this.starValue) {
+            star.classList.add("yellow");
+          } else {
+            star.classList.remove("yellow");
+          }
+        }
+        if (e.type === "mouseout") {
+          star.classList.remove("yellow");
+        }
+      });
+    }
+  }
+
+
+{/*  <li className="star" >
+                      <FontAwesomeIcon icon={faStar} />
+                    </li>
+                    <li className="star">
+                      <FontAwesomeIcon icon={faStar} />
+                    </li>
+                    <li className="star">
+                      <FontAwesomeIcon icon={faStar} />
+                    </li>
+                    <li className="star">
+                      <FontAwesomeIcon icon={faStar} />
+                    </li>
+                    <li className="star">
+                      <FontAwesomeIcon icon={faStar} />
+                    </li> */}
+
+{/* <ListItem
+                        className="star"
+                        key={index}
+                        id={`star${index}`}
+                        index={index}
+                        /* onClick={(e)=>starClick(e.target.id)}
+                        onMouseOver={() => {}}
+                        onMouseOut={() => {}} 
+                      /> */}
+
+
+
+  const [dropdownStatus, setDropdownStatus] = useState(false);
+<div
+              className="d-inline-block dropdown ms-3"
+              onClick={() => setDropdownStatus(!dropdownStatus)}
+            >
+              <div
+                className="btn dropdown-toggle text-white me-4"
+                type="button"
+                id="dropDownMenuButton"
+                data-bs-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <figure className="avatar avatar-nav">
+                  <img
+                    src={user.avatar && user.avatar.url}
+                    alt={user && user.name}
+                    className="rounded-circle"
+                  />
+                </figure>
+                <span>{user && user.name}</span>
+              </div>
+              <div
+                className={`dropdown-menu text-center${
+                  dropdownStatus ? " show" : ""
+                }`}
+                aria-labelledby="dropDownMenuButton"
+              >
+                {user && user.role === "admin" && (
+                  <NavLink className="dropdown-item" to="/dashboard">
+                    Dashboard
+                  </NavLink>
+                )}
+                <NavLink className="dropdown-item" to="/me">
+                  Profile
+                </NavLink>
+                <NavLink className="dropdown-item" to="/orders/me">
+                    Orders
+                  </NavLink>
+                <hr class="dropdown-divider" />
+                <NavLink className="dropdown-item text-danger" to="/" onClick={logoutHandler}>
+                  Logout
+                </NavLink>
+              </div>
+            </div>
+
+Home.js
+ >>> brand selection
+ {/* <ul className="ps-0">
+                          {brands.map((brand) => (
+                            <li
+                              style={{
+                                cursor: "pointer",
+                                listStyleType: "none",
+                              }}
+                              key={brand}
+                              onClick={() => setBrand(brand)}
+                            >
+                              {brand}
+                            </li>
+                          ))}
+                        </ul> */}
+>>> star selection
+{/*  <ul className="ps-0">
+                          {[5, 4, 3, 2, 1].map((star) => (
+                            <li
+                              style={{
+                                cursor: "pointer",
+                                listStyleType: "none",
+                              }}
+                              key={star}
+                              onClick={() => setRating(star * 2)}
+                            >
+                              <div className="rating-outer">
+                                <div
+                                  className="rating-inner"
+                                  style={{
+                                    width: `${star * 20}%`,
+                                  }}
+                                ></div>
+                              </div>
+                            </li>
+                          ))}
+                        </ul> */}

@@ -1,0 +1,38 @@
+{
+  "name": "phone_alone",
+  "version": "1.0.0",
+  "description": "full ecommerce site using mern",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "SET NODE_ENV=DEVELOPMENT & nodemon backend/server.js",
+    "prod": "SET NODE_ENV=PRODUCTION & nodemon backend/server.js",
+    "seeder": "node backend/utils/seeder.js",
+    "build": "",
+    "heroku-postbuild": "cd frontend && npm install --only=dev && npm install && npm run build"
+  },
+  "author": "krochet",
+  "license": "ISC",
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.8.2",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.0",
+    "cloudinary": "^1.30.0",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-fileupload": "^1.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.3.3",
+    "nodemailer": "^6.7.5",
+    "stripe": "^9.10.0",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  },
+  "engines": {
+    "node": "16.14.2",
+    "npm": "8.12.1"
+  }
+}
