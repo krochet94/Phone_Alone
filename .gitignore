@@ -2,6 +2,9 @@
 /node_modules
 /frontend/node_modules
 
+# production
+/frontend/build
+
 # misc
 /backend/config/config.env
 /frontend/.env.local
