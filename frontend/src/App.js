@@ -56,7 +56,7 @@ function App() {
     getApiKey();
   }, []);
 
-  const { user, isAuthenticated, loading } = useSelector((state) => state.auth);
+  const { user, loading } = useSelector((state) => state.auth);
 
   return (
     <Router>
