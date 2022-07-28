@@ -60,7 +60,7 @@ userSchema.methods.comparePassword = async function (enteredPassword) {
 
 //Return JWT Token
 userSchema.methods.getJwtToken = function () {
-  return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
+  return jwt.sign({ id: this._id }, `${process.env.JWT_SECRET}`, {
     expiresIn: process.env.JWT_EXPIRATION,
   });
 };
