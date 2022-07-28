@@ -10,7 +10,7 @@
     "seeder": "node backend/utils/seeder.js",
     "build": "cd frontend && npm run build",
     "install-frontend": "cd frontend && npm install --legacy-peer-deps",
-    "heroku-postbuild": "npm run install-frontend && npm run build"
+    "heroku-postbuild": "npm install && npm run install-frontend && npm run build"
   },
   "author": "krochet",
   "license": "ISC",
