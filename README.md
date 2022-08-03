@@ -10,7 +10,6 @@
 - Can add, create, edit, update, and review- products, users and orders
 - Order function using Stripe API, shipping functionality
 - Admin user dashboard
-- Export documents as Markdown, HTML and PDF
 
 ### Env Variables
 
