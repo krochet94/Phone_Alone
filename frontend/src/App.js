@@ -59,7 +59,7 @@ function App() {
   const { user, loading } = useSelector((state) => state.auth);
 
   return (
-    <Router>
+    <Router basename='/'>
       <div className="App">
         <Header />
         <Routes>
