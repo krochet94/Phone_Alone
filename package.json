@@ -8,9 +8,9 @@
     "dev": "SET NODE_ENV=DEVELOPMENT & nodemon backend/server.js",
     "prod": "SET NODE_ENV=PRODUCTION & nodemon backend/server.js",
     "seeder": "node backend/utils/seeder.js",
-    "build": "cd frontend && npm run build",
+    "build": "npm run heroku-postbuild && cd frontend && npm run build",
     "install-frontend": "cd frontend && npm install --legacy-peer-deps",
-    "heroku-postbuild": "npm install && npm run install-frontend && npm run build"
+    "heroku-postbuild": "npm install && npm run install-frontend"
   },
   "author": "krochet",
   "license": "ISC",
