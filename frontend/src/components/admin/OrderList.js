@@ -106,7 +106,7 @@ const OrderList = () => {
       dispatch({ type: DELETE_ORDER_RESET });
       navigate("/admin/orders");
     }
-  }, [dispatch, alert, error, isDeleted]);
+  }, [dispatch, alert, error, isDeleted, navigate]);
 
   return (
     <>

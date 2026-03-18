@@ -27,7 +27,7 @@ const Login = () => {
       alert.error(error);
       dispatch(clearErrors());
     }
-  }, [dispatch, alert, error, isAuthenticated]);
+  }, [dispatch, alert, error, isAuthenticated, navigate, redirect]);
 
   const submitHandler = (e) => {
     e.preventDefault();

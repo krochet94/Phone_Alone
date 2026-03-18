@@ -57,7 +57,7 @@ const Register = () => {
       alert.error(error);
       dispatch(clearErrors());
     }
-  }, [dispatch, alert, error, isAuthenticated]);
+  }, [dispatch, alert, error, isAuthenticated, navigate]);
 
   return (
     <>

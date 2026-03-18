@@ -94,7 +94,7 @@ const NewProduct = () => {
       alert.success("Added product successfully");
       dispatch({ type: NEW_PRODUCT_RESET });
     }
-  }, [dispatch, alert, error, success]);
+  }, [dispatch, alert, error, success, navigate]);
 
   return (
     <>

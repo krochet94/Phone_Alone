@@ -27,7 +27,7 @@ const NewPassword = () => {
       alert.success("Password updated successfully");
       navigate("/login");
     }
-  }, [dispatch, alert, error, success]);
+  }, [dispatch, alert, error, success, navigate]);
 
   const submitHandler = (e) => {
     e.preventDefault();

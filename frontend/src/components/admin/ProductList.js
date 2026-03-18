@@ -113,7 +113,7 @@ const ProductList = () => {
       dispatch({ type: DELETE_PRODUCT_RESET });
       navigate("/admin/products");
     }
-  }, [dispatch, alert, error, deleteError, isDeleted]);
+  }, [dispatch, alert, error, deleteError, isDeleted, navigate]);
 
   return (
     <>

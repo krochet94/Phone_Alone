@@ -99,7 +99,7 @@ const UserList = () => {
       dispatch({ type: DELETE_USER_RESET });
       navigate("/admin/users");
     } 
-  }, [dispatch, alert, error, isDeleted]);
+  }, [dispatch, alert, error, isDeleted, navigate]);
 
   return (
     <>

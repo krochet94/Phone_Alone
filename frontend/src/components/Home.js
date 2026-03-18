@@ -90,6 +90,7 @@ const Home = () => {
     error,
     keyword,
     currentPage,
+    currentPageStatus,
     price,
     brand,
     rating,

@@ -34,8 +34,9 @@ const UpdateUser = () => {
   };
 
   useEffect(() => {
-    dispatch(getUserDetails(id));
-    if (user && user._id === id) {
+    if (!user || user._id !== id) {
+      dispatch(getUserDetails(id));
+    } else {
       setName(user.name);
       setEmail(user.email);
       setRole(user.role);
@@ -52,7 +53,7 @@ const UpdateUser = () => {
         type: UPDATE_USER_RESET,
       });
     }
-  }, [dispatch, alert, error, isUpdated, user._id, id]);
+  }, [dispatch, alert, error, isUpdated, user, id, navigate]);
 
   return (
     <>

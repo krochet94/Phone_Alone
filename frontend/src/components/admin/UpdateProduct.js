@@ -125,7 +125,17 @@ const UpdateProduct = () => {
       alert.success("Product updated successfully");
       dispatch({ type: UPDATE_PRODUCT_RESET });
     }
-  }, [dispatch, alert, error, updateError, isUpdated, product, id]);
+  }, [
+    dispatch,
+    alert,
+    error,
+    updateError,
+    isUpdated,
+    product,
+    id,
+    navigate,
+    updateData,
+  ]);
 
   return (
     <>
