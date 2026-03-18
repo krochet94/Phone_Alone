@@ -49,10 +49,16 @@ function App() {
 
   useEffect(() => {
     store.dispatch(loadUser());
+
     async function getApiKey() {
-      const { data } = await axios.get("/api/v1/apikey");
-      setApiKey(data.apiKey);
+      try {
+        const { data } = await axios.get("/api/v1/apikey");
+        setApiKey(data.apiKey);
+      } catch (error) {
+        setApiKey("");
+      }
     }
+
     getApiKey();
   }, []);
 

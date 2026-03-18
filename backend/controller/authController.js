@@ -4,11 +4,11 @@ const catchAsyncErrors = require("../middlewares/catchAsyncErrors");
 const sendToken = require("../utils/jwtToken");
 const sendEmail = require("../utils/sendEmail.js");
 const crypto = require("crypto");
-const cloudinary = require("cloudinary");
+const cloudinary = require("cloudinary").v2;
 
 //Register a user => /api/v1/register
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
-  const result = await cloudinary.v2.uploader.upload(req.body.avatar, {
+  const result = await cloudinary.uploader.upload(req.body.avatar, {
     folder: "Phone_Alone/Avatars",
     width: 300,
     crop: "scale",
@@ -81,9 +81,8 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
   await user.save({ validateBeforeSave: false });
 
   //Create reset password url
-  const resetUrl = `${req.protocol}://${req.get(
-    "host"
-  )}/password/reset/${resetToken}`;
+  const frontendUrl = process.env.FRONTEND_URL || `${req.protocol}://${req.get("host")}`;
+  const resetUrl = `${frontendUrl}/password/reset/${resetToken}`;
 
   const message = `Your password reset token is as follows:\n\n${resetUrl}\n\nPlease disregard this email if you did not make the request. Thanks.`;
 
@@ -178,8 +177,8 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
   if (req.body.avatar !== "") {
     const user = await User.findById(req.user.id);
     const image_id = user.avatar.public_id;
-    const res = await cloudinary.v2.uploader.destroy(image_id);
-    const result = await cloudinary.v2.uploader.upload(req.body.avatar, {
+    await cloudinary.uploader.destroy(image_id);
+    const result = await cloudinary.uploader.upload(req.body.avatar, {
       folder: "Phone_Alone/Avatars",
       width: 300,
       crop: "scale",
@@ -193,7 +192,6 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
   const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
     new: true,
     runValidators: true,
-    useFindAndModify: false,
   });
 
   res.status(200).json({
@@ -203,9 +201,15 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
 
 //Logout user => /api/v1/logout
 exports.logout = catchAsyncErrors(async (req, res, next) => {
+  const isProduction =
+    String(process.env.NODE_ENV || "development").trim().toLowerCase() ===
+    "production";
+
   res.cookie("token", null, {
     expires: new Date(Date.now()),
     httpOnly: true,
+    secure: isProduction,
+    sameSite: isProduction ? "none" : "lax",
   });
 
   res.status(200).json({
@@ -251,7 +255,6 @@ exports.updateUser = catchAsyncErrors(async (req, res, next) => {
   const user = await User.findByIdAndUpdate(req.params.id, newUserData, {
     new: true,
     runValidators: true,
-    useFindAndModify: false,
   });
 
   res.status(200).json({
@@ -268,8 +271,8 @@ exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
   }
 
   //Remove avatar from cloudinary
-  await cloudinary.v2.uploader.destroy(user.avatar.public_id);
-  await user.remove();
+  await cloudinary.uploader.destroy(user.avatar.public_id);
+  await user.deleteOne();
 
   res.status(200).json({
     success: true,

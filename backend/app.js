@@ -2,24 +2,33 @@ const express = require("express");
 const app = express();
 
 const cookieParser = require("cookie-parser");
-const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
-const dotenv = require("dotenv");
-const path = require("path");
+const cloudinary = require("cloudinary").v2;
+
+const loadEnv = require("./config/loadEnv");
 
 const errorMiddleware = require("./middlewares/errors");
 
-//Setting up config file
-//dotenv.config({ path: path.join(__dirname, './config/config.env') });
+loadEnv();
 
-if (process.env.NODE_ENV !== 'PRODUCTION') {
-  dotenv.config({ path: "backend/config/config.env" });
-}
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(fileUpload());
+app.set("trust proxy", 1);
+
+app.get("/api/health", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "API is healthy",
+  });
+});
 
 //Import all routes
 app.use("/api/v1", require("./routes/product"));
@@ -27,16 +36,7 @@ app.use("/api/v1", require("./routes/auth"));
 app.use("/api/v1", require("./routes/order"));
 app.use("/api/v1", require("./routes/payment"));
 
-//created after building frontend
-if((process.env.NODE_ENV || "").trim() === "PRODUCTION") {
-  app.use(express.static(path.join(__dirname, "../frontend", "build")));
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "../frontend", "build", "index.html"));
-  });
-} 
-
 //Middleware to handle errors
 app.use(errorMiddleware);
 
 module.exports = app;
-//C:\Users\krochet\Desktop\WebDev\Sample Projects\Phone_Alone\frontend\build

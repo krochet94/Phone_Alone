@@ -2,7 +2,7 @@ const Product = require("../models/product");
 const ErrorHandler = require("../utils/errorHandler");
 const catchAsyncErrors = require("../middlewares/catchAsyncErrors");
 const APIFeatures = require("../utils/apiFeatures");
-const cloudinary = require("cloudinary");
+const cloudinary = require("cloudinary").v2;
 
 //Create new product  =>  /api/v1/admin/product/new
 exports.newProduct = catchAsyncErrors(async (req, res, next) => {
@@ -15,7 +15,7 @@ exports.newProduct = catchAsyncErrors(async (req, res, next) => {
 
   let imagesLinks = [];
   for (let i = 0; i < images.length; i++) {
-    const result = await cloudinary.v2.uploader.upload(images[i], {
+    const result = await cloudinary.uploader.upload(images[i], {
       folder: "Phone_Alone/Products",
       width: 300,
       crop: "scale",
@@ -114,15 +114,13 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
   if (images !== undefined) {
     //Delete previous images
     for (let i = 0; i < product.images.length; i++) {
-      const result = await cloudinary.v2.uploader.destroy(
-        product.images[i].public_id
-      );
+      await cloudinary.uploader.destroy(product.images[i].public_id);
     }
 
     //upload new images
     let imagesLinks = [];
     for (let i = 0; i < images.length; i++) {
-      const result = await cloudinary.v2.uploader.upload(images[i], {
+      const result = await cloudinary.uploader.upload(images[i], {
         folder: "Phone_Alone/Products",
         width: 300,
         crop: "scale",
@@ -141,7 +139,6 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
   product = await Product.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,
-    useFindandModify: false,
   });
 
   res.status(200).json({
@@ -166,12 +163,10 @@ exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
 
   //Delete product's images in cloudinary
   for (let i = 0; i < product.images.length; i++) {
-    const result = await cloudinary.v2.uploader.destroy(
-      product.images[i].public_id
-    );
+    await cloudinary.uploader.destroy(product.images[i].public_id);
   }
 
-  await product.remove();
+  await product.deleteOne();
 
   res.status(200).json({
     success: true,
@@ -223,6 +218,10 @@ exports.createProductReview = catchAsyncErrors(async (req, res, next) => {
 exports.getProductReviews = catchAsyncErrors(async (req, res, next) => {
   const product = await Product.findById(req.query.id);
 
+  if (!product) {
+    return next(new ErrorHandler("Product not found", 404));
+  }
+
   res.status(200).json({
     success: true,
     reviews: product.reviews,
@@ -233,6 +232,10 @@ exports.getProductReviews = catchAsyncErrors(async (req, res, next) => {
 exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
   const product = await Product.findById(req.query.productId);
 
+  if (!product) {
+    return next(new ErrorHandler("Product not found", 404));
+  }
+
   const reviews = product.reviews.filter(
     (review) => review._id.toString() !== req.query.id.toString()
   );
@@ -240,8 +243,9 @@ exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
   const numOfReviews = reviews.length;
 
   const rating =
-    product.reviews.reduce((acc, item) => item.rating + acc, 0) /
-    reviews.length;
+    reviews.length === 0
+      ? 0
+      : reviews.reduce((acc, item) => item.rating + acc, 0) / reviews.length;
 
   await Product.findByIdAndUpdate(
     req.query.productId,
@@ -253,7 +257,6 @@ exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
     {
       new: true,
       runValidators: true,
-      useFindandModify: false,
     }
   );
 

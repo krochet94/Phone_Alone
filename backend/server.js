@@ -1,9 +1,7 @@
 const app = require("./app");
 const connectDatabase = require("./config/database");
 
-const dotenv = require("dotenv");
-const cloudinary = require("cloudinary");
-const path = require("path");
+const loadEnv = require("./config/loadEnv");
 
 //Handle Uncaught Exceptions
 process.on("uncaughtException", (err) => {
@@ -12,24 +10,16 @@ process.on("uncaughtException", (err) => {
   process.exit(1);
 });
 
-//Setting up config file
-//dotenv.config({ path: path.join(__dirname, './config/config.env') });
-dotenv.config({ path: 'backend/config/config.env'});
+loadEnv();
 
 //Connecting to database
 connectDatabase();
 
-//Setting up cloudinary config
-cloudinary.config({
-  cloud_name : process.env.CLOUDINARY_CLOUD_NAME,
-  api_key : process.env.CLOUDINARY_API_KEY,
-  api_secret : process.env.CLOUDINARY_API_SECRET
-})
+const port = Number(process.env.PORT) || 4000;
 
-
-const server = app.listen(process.env.PORT, () => {
+const server = app.listen(port, () => {
   console.log(
-    `Server started on PORT: ${process.env.PORT} in ${process.env.NODE_ENV} mode.`
+    `Server started on PORT: ${port} in ${(process.env.NODE_ENV || "development").toLowerCase()} mode.`
   );
 });
 

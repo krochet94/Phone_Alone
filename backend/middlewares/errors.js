@@ -2,15 +2,18 @@ const ErrorHandler = require("../utils/errorHandler");
 
 module.exports = (err, req, res, next) => {
   err.statusCode = err.statusCode || 500;
+  const env = String(process.env.NODE_ENV || "development")
+    .trim()
+    .toLowerCase();
 
-  if (process.env.NODE_ENV.trim() === "DEVELOPMENT") {
+  if (env === "development") {
     res.status(err.statusCode).json({
       success: false,
       message: err.message,
       error: err,
       stack: err.stack,
     });
-  } else if (process.env.NODE_ENV.trim() === "PRODUCTION") {
+  } else {
     let error = { ...err };
     error.message = err.message;
 
@@ -44,14 +47,9 @@ module.exports = (err, req, res, next) => {
       error = new ErrorHandler(message, 400);
     }
 
-    res.status(error.statusCode).json({
+    res.status(error.statusCode || 500).json({
       success: false,
       message: error.message || "Internal Server Error",
-    });
-  } else {
-    res.status(err.statusCode).json({
-      success: false,
-      message: "Fatal Error: Not Production nor Development mode",
     });
   }
 };

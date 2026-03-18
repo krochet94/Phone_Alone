@@ -1,4 +1,4 @@
-const bcrypt = require("bcryptjs/dist/bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 const validator = require("validator");
@@ -60,8 +60,12 @@ userSchema.methods.comparePassword = async function (enteredPassword) {
 
 //Return JWT Token
 userSchema.methods.getJwtToken = function () {
-  return jwt.sign({ id: this._id }, `${process.env.JWT_SECRET}`, {
-    expiresIn: process.env.JWT_EXPIRATION,
+  if (!process.env.JWT_SECRET) {
+    throw new Error("JWT_SECRET is not configured.");
+  }
+
+  return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRATION || "7d",
   });
 };
 
