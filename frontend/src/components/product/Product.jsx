@@ -2,13 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Product = ({ product, col }) => {
+  const imageUrl = product?.images?.[0]?.url || "/images/logo.png";
+
   return (
     <div className={`col-12 ${col===3?"col-sm-6":"col-md-6"}  col-lg-${col} my-3`}>
       <div className="card p-3 rounded">
         <img
           className="card-img-top mx-auto"
-          src={product.images[0].url}
-          alt="testImage"
+          src={imageUrl}
+          alt={product?.name || "Product image"}
           style={{height:'auto'}}
         />
         <div className="card-body d-flex flex-column">
