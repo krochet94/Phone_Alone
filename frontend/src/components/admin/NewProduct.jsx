@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useAlert } from "react-alert";
+import { toast } from "sonner";
 import { newProduct, clearErrors } from "../../actions/productActions";
 import MetaData from "../layouts/MetaData";
 import Sidebar from "./Sidebar";
 import "../../App.css";
 
 const NewProduct = () => {
-  const alert = useAlert();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [name, setName] = useState("");
@@ -86,15 +85,15 @@ const NewProduct = () => {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
     if (success) {
       navigate("/admin/products");
-      alert.success("Added product successfully");
+      toast.success("Added product successfully");
       dispatch({ type: NEW_PRODUCT_RESET });
     }
-  }, [dispatch, alert, error, success, navigate]);
+  }, [dispatch, error, success, navigate]);
 
   return (
     <>

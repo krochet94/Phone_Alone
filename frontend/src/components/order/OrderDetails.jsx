@@ -1,14 +1,13 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useAlert } from "react-alert";
+import { toast } from "sonner";
 import { getOrderDetails, clearErrors } from "../../actions/orderActions";
 import MetaData from "../layouts/MetaData";
 import Loader from "../layouts/Loader";
 import "../../App.css";
 
 const OrderDetails = () => {
-  const alert = useAlert();
   const dispatch = useDispatch();
   const { id } = useParams();
   const { loading, error, order = {} } = useSelector(
@@ -29,10 +28,10 @@ const OrderDetails = () => {
   useEffect(() => {
     dispatch(getOrderDetails(id));
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
-  }, [dispatch, alert, error, id]);
+  }, [dispatch, error, id]);
 
   return (
     <>

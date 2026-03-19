@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "../../App.css";
 import { useNavigate, useParams } from "react-router-dom";
-import { useAlert } from "react-alert";
+import { toast } from "sonner";
 import { useDispatch, useSelector } from "react-redux";
 import MetaData from "../layouts/MetaData";
 import { resetPassword, clearErrors } from "../../actions/userActions";
 
 const NewPassword = () => {
   const dispatch = useDispatch();
-  const alert = useAlert();
   const navigate = useNavigate();
   const { token } = useParams();
   const [password, setPassword] = useState("");
@@ -19,15 +18,15 @@ const NewPassword = () => {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
     if (success) {
-      alert.success("Password updated successfully");
+      toast.success("Password updated successfully");
       navigate("/login");
     }
-  }, [dispatch, alert, error, success, navigate]);
+  }, [dispatch, error, success, navigate]);
 
   const submitHandler = (e) => {
     e.preventDefault();

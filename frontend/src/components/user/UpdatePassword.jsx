@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../../App.css";
 import { useNavigate } from "react-router-dom";
-import { useAlert } from "react-alert";
+import { toast } from "sonner";
 import { useDispatch, useSelector } from "react-redux";
 import MetaData from "../layouts/MetaData";
 import { updatePassword, clearErrors } from "../../actions/userActions";
@@ -9,7 +9,6 @@ import { updatePassword, clearErrors } from "../../actions/userActions";
 const UpdatePassword = () => {
   const UPDATE_PASSWORD_RESET = "UPDATE_PASSWORD_RESET";
   const dispatch = useDispatch();
-  const alert = useAlert();
   const navigate = useNavigate();
   const [oldPassword, setOldPassword] = useState("");
   const [password, setPassword] = useState("");
@@ -17,18 +16,18 @@ const UpdatePassword = () => {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
     if (isUpdated) {
-      alert.success("Password changed successfully");
+      toast.success("Password changed successfully");
       navigate("/me");
       dispatch({
         type: UPDATE_PASSWORD_RESET,
       });
     }
-  }, [dispatch, alert, error, isUpdated, navigate]);
+  }, [dispatch, error, isUpdated, navigate]);
 
   const submitHandler = (e) => {
     e.preventDefault();

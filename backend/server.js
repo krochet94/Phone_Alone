@@ -23,9 +23,27 @@ const server = app.listen(port, () => {
   );
 });
 
+server.on("error", (err) => {
+  const code =
+    typeof err === "object" && err !== null && "code" in err ? err.code : undefined;
+
+  if (code === "EADDRINUSE") {
+    console.error(`ERROR: Port ${port} is already in use.`);
+    console.error(
+      "Tip: stop the existing process using this port, or set a different PORT in backend/config/config.env."
+    );
+    process.exit(1);
+  }
+
+  const message = err instanceof Error ? err.message : String(err);
+  console.error(`ERROR: ${message}`);
+  process.exit(1);
+});
+
 //Handle Unhandled Promise rejections
 process.on("unhandledRejection", (err) => {
-  console.log(`ERROR: ${err.message}`);
+  const message = err instanceof Error ? err.message : String(err);
+  console.log(`ERROR: ${message}`);
   console.error("Server shutting down due to Unhandled Promise Rejection");
   server.close(() => process.exit(1));
 });

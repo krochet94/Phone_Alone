@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useAlert } from "react-alert";
+import { toast } from "sonner";
 import {
   updateUser,
   getUserDetails,
@@ -14,7 +14,6 @@ import "../../App.css";
 const UpdateUser = () => {
   const UPDATE_USER_RESET = "UPDATE_USER_RESET";
   const dispatch = useDispatch();
-  const alert = useAlert();
   const navigate = useNavigate();
   const { id } = useParams();
   const [name, setName] = useState("");
@@ -42,18 +41,18 @@ const UpdateUser = () => {
       setRole(user.role);
     }
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
     if (isUpdated) {
-      alert.success("User updated successfully");
+      toast.success("User updated successfully");
       navigate("/admin/users");
       dispatch({
         type: UPDATE_USER_RESET,
       });
     }
-  }, [dispatch, alert, error, isUpdated, user, id, navigate]);
+  }, [dispatch, error, isUpdated, user, id, navigate]);
 
   return (
     <>

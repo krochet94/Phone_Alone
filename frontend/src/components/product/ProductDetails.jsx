@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Loader from "../layouts/Loader";
 import MetaData from "../layouts/MetaData";
 import { Link, useParams } from "react-router-dom";
-import { useAlert } from "react-alert";
+import { toast } from "sonner";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getProductDetails,
@@ -27,7 +27,6 @@ import "../../App.css";
 
 const ProductDetails = () => {
   const dispatch = useDispatch();
-  const alert = useAlert();
   const { id } = useParams();
   const NEW_REVIEW_RESET = "NEW_REVIEW_RESET";
   const [quantity, setQuantity] = useState(1);
@@ -57,7 +56,7 @@ const ProductDetails = () => {
 
   const addToCart = () => {
     dispatch(addItemToCart(id, quantity));
-    alert.success("Item added to cart");
+    toast.success("Item added to cart");
   };
 
   const starClick = (el) => {
@@ -99,18 +98,18 @@ const ProductDetails = () => {
   useEffect(() => {
     dispatch(getProductDetails(id));
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
     if (reviewError) {
-      alert.error(reviewError);
+      toast.error(reviewError);
       dispatch(clearErrors());
     }
     if (success) {
-      alert.success("Review posted successfully");
+      toast.success("Review posted successfully");
       dispatch({ type: NEW_REVIEW_RESET });
     }
-  }, [dispatch, alert, error, id, reviewError, success]);
+  }, [dispatch, error, id, reviewError, success]);
 
   return (
     <>

@@ -1,20 +1,19 @@
 import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useAlert } from "react-alert";
+import { toast } from "sonner";
 import Search from "./Search";
 import { logout } from "../../actions/userActions";
 import { Dropdown, Row, Col } from "react-bootstrap";
 import "../../App.css";
 
 const Header = () => {
-  const alert = useAlert();
   const dispatch = useDispatch();
   const { loading, user } = useSelector((state) => state.auth);
   const { cartItems } = useSelector((state) => state.cart);
   const logoutHandler = () => {
     dispatch(logout());
-    alert.success("Successfully logged out...");
+    toast.success("Successfully logged out...");
   };
 
   return (

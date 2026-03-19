@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useAlert } from "react-alert";
-import { MDBDataTable } from "mdbreact";
+import { toast } from "sonner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -11,10 +10,10 @@ import {
 } from "../../actions/productActions";
 import MetaData from "../layouts/MetaData";
 import Sidebar from "./Sidebar";
+import SimpleTable from "../layouts/SimpleTable";
 import "../../App.css";
 
 const ProductReviews = () => {
-  const alert = useAlert();
   const dispatch = useDispatch();
   const [productId, setProductId] = useState("");
   const DELETE_REVIEW_RESET = "DELETE_REVIEW_RESET";
@@ -82,16 +81,16 @@ const ProductReviews = () => {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
       dispatch({ type: DELETE_REVIEW_RESET });
     }
     if (isDeleted) {
-      alert.success("Review deleted succesfully...");
+      toast.success("Review deleted succesfully...");
       dispatch({ type: DELETE_REVIEW_RESET });
       dispatch(getProductReviews(productId));
     }
-  }, [dispatch, alert, error, isDeleted, productId]);
+  }, [dispatch, error, isDeleted, productId]);
 
   return (
     <>
@@ -134,12 +133,9 @@ const ProductReviews = () => {
           </div>
 
           {reviews && reviews.length > 0 ? (
-            <MDBDataTable
+            <SimpleTable
               data={setReviews()}
               className="px-3"
-              bordered
-              striped
-              hover
             />
           ) : (
             <p className="mt-5 text-center">No reviews yet.</p>

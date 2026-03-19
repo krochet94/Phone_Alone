@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useAlert } from "react-alert";
+import { toast } from "sonner";
 import {
   updateOrder,
   getOrderDetails,
@@ -23,7 +23,6 @@ const ProcessOrder = () => {
     totalPrice,
     orderStatus,
   } = order;
-  const alert = useAlert();
   const dispatch = useDispatch();
   const { id } = useParams();
   const UPDATE_ORDER_RESET = "UPDATE_ORDER_RESET";
@@ -44,14 +43,14 @@ const ProcessOrder = () => {
   useEffect(() => {
     dispatch(getOrderDetails(id));
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
     if (isUpdated) {
-      alert.success("Order updated successfully");
+      toast.success("Order updated successfully");
       dispatch({ type: UPDATE_ORDER_RESET });
     }
-  }, [dispatch, alert, error, isUpdated, id]);
+  }, [dispatch, error, isUpdated, id]);
 
   return (
     <>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../../App.css";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { useAlert } from "react-alert";
+import { toast } from "sonner";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../layouts/Loader";
 import MetaData from "../layouts/MetaData";
@@ -9,7 +9,6 @@ import { login, clearErrors } from "../../actions/userActions";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const alert = useAlert();
   const navigate = useNavigate();
   const { search } = useLocation();
   const redirect = search ? `/${search.split("=")[1]}` : "/";
@@ -24,10 +23,10 @@ const Login = () => {
       navigate(redirect);
     }
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
-  }, [dispatch, alert, error, isAuthenticated, navigate, redirect]);
+  }, [dispatch, error, isAuthenticated, navigate, redirect]);
 
   const submitHandler = (e) => {
     e.preventDefault();

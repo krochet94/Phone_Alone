@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useAlert } from "react-alert";
+import { toast } from "sonner";
 import {
   useStripe,
   useElements,
@@ -26,7 +26,6 @@ const options = {
 const Payment = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const alert = useAlert();
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useSelector((state) => state.auth);
@@ -75,7 +74,7 @@ const Payment = () => {
       });
 
       if (result.error) {
-        alert.error(result.error.message);
+        toast.error(result.error.message);
         document.querySelector("#pay_btn").disabled = false;
       } else {
         //payment is process or not
@@ -87,21 +86,21 @@ const Payment = () => {
           dispatch(createOrder(order));
           navigate("/success");
         } else {
-          alert.error("There were some issues in the payment process...");
+          toast.error("There were some issues in the payment process...");
         }
       }
     } catch (error) {
       document.querySelector("#pay_btn").disabled = false;
-      alert.error(error.response.data.message);
+      toast.error(error.response.data.message);
     }
   };
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
-  }, [dispatch, alert, error]);
+  }, [dispatch, error]);
 
   return (
     <>

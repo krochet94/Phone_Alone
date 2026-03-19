@@ -4,19 +4,18 @@ import Product from "./product/Product";
 import MetaData from "./layouts/MetaData";
 import Loader from "./layouts/Loader";
 import { getProducts } from "../actions/productActions";
-import Pagination from "react-js-pagination";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import { useDispatch, useSelector } from "react-redux";
-import { useAlert } from "react-alert";
+import { toast } from "sonner";
 import { useLocation } from "react-router-dom";
+import { Pagination } from "react-bootstrap";
 
 //rc-slider initialization
 const createSliderWithTooltip = Slider.createSliderWithTooltip;
 const Range = createSliderWithTooltip(Slider.Range);
 
 const Home = () => {
-  const alert = useAlert();
   const dispatch = useDispatch();
   const location = useLocation();
   const brands = [
@@ -68,7 +67,7 @@ const Home = () => {
 
   useEffect(() => {
     if (error) {
-      return alert.error(error);
+      return toast.error(error);
     }
     if (location.state) {
       setKeyword(location.state.keyword);
@@ -86,7 +85,6 @@ const Home = () => {
     setCurrentPageStatus(true);
   }, [
     dispatch,
-    alert,
     error,
     keyword,
     currentPage,
@@ -102,6 +100,20 @@ const Home = () => {
   let count = productCount;
   if (keyword) {
     count = filteredProductCount;
+  }
+
+  const totalPages = Math.ceil(count / resPerPage);
+  const maxVisiblePages = 5;
+  let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+  let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+
+  if (endPage - startPage + 1 < maxVisiblePages) {
+    startPage = Math.max(1, endPage - maxVisiblePages + 1);
+  }
+
+  const pages = [];
+  for (let page = startPage; page <= endPage; page += 1) {
+    pages.push(page);
   }
 
   return (
@@ -274,21 +286,58 @@ const Home = () => {
           {/* pagination function  */}
           {resPerPage < count && (
             <div className="d-flex justify-content-center mt-5">
-              <Pagination
-                activePage={currentPage}
-                itemsCountPerPage={resPerPage}
-                totalItemsCount={count}
-                onChange={(pageNumber) => {
-                  setCurrentPageStatus(false);
-                  setCurrentPage(pageNumber);
-                }}
-                nextPageText={">"}
-                prevPageText={"<"}
-                firstPageText={`<<`}
-                lastPageText={">>"}
-                itemClass="page-item"
-                linkClass="page-link"
-              />
+              <Pagination>
+                <Pagination.First
+                  onClick={() => {
+                    if (currentPage !== 1) {
+                      setCurrentPageStatus(false);
+                      setCurrentPage(1);
+                    }
+                  }}
+                  disabled={currentPage === 1}
+                />
+                <Pagination.Prev
+                  onClick={() => {
+                    if (currentPage > 1) {
+                      setCurrentPageStatus(false);
+                      setCurrentPage(currentPage - 1);
+                    }
+                  }}
+                  disabled={currentPage === 1}
+                />
+
+                {pages.map((page) => (
+                  <Pagination.Item
+                    key={page}
+                    active={page === currentPage}
+                    onClick={() => {
+                      setCurrentPageStatus(false);
+                      setCurrentPage(page);
+                    }}
+                  >
+                    {page}
+                  </Pagination.Item>
+                ))}
+
+                <Pagination.Next
+                  onClick={() => {
+                    if (currentPage < totalPages) {
+                      setCurrentPageStatus(false);
+                      setCurrentPage(currentPage + 1);
+                    }
+                  }}
+                  disabled={currentPage === totalPages}
+                />
+                <Pagination.Last
+                  onClick={() => {
+                    if (currentPage !== totalPages) {
+                      setCurrentPageStatus(false);
+                      setCurrentPage(totalPages);
+                    }
+                  }}
+                  disabled={currentPage === totalPages}
+                />
+              </Pagination>
             </div>
           )}
         </div>

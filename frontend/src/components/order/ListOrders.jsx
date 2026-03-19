@@ -1,17 +1,16 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useAlert } from "react-alert";
-import { MDBDataTable } from "mdbreact";
+import { toast } from "sonner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { myOrders, clearErrors } from "../../actions/orderActions";
 import MetaData from "../layouts/MetaData";
 import Loader from "../layouts/Loader";
+import SimpleTable from "../layouts/SimpleTable";
 import "../../App.css";
 
 const ListOrders = () => {
-  const alert = useAlert();
   const dispatch = useDispatch();
   const { loading, error, orders } = useSelector((state) => state.myOrders);
 
@@ -73,27 +72,21 @@ const ListOrders = () => {
   useEffect(() => {
     dispatch(myOrders());
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
-  }, [dispatch, alert, error]);
+  }, [dispatch, error]);
 
   return (
     <>
       <MetaData title="My Orders" />
       <div className="container container-fluid">
-      <h1 className="my-5">My Orders</h1>
-      {loading ? (
-        <Loader />
-      ) : (
-        <MDBDataTable
-          data={setOrders()}
-          className="px-3"
-          bordered
-          striped
-          hover
-        />
-      )}
+        <h1 className="my-5">My Orders</h1>
+        {loading ? (
+          <Loader />
+        ) : (
+          <SimpleTable data={setOrders()} className="px-3" />
+        )}
       </div>
     </>
   );

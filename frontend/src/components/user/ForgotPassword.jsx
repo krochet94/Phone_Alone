@@ -1,26 +1,25 @@
 import React, { useEffect, useState } from "react";
 import "../../App.css";
-import { useAlert } from "react-alert";
+import { toast } from "sonner";
 import { useDispatch, useSelector } from "react-redux";
 import MetaData from "../layouts/MetaData";
 import { forgotPassword, clearErrors } from "../../actions/userActions";
 
 const ForgotPassword = () => {
   const dispatch = useDispatch();
-  const alert = useAlert();
   const [email, setEmail] = useState("");
   const { error, message, loading } = useSelector((state) => state.forgotPassword);
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
 
     if (message) {
-      alert.success(message);
+      toast.success(message);
     }
-  }, [dispatch, alert, error, message]);
+  }, [dispatch, error, message]);
 
   const submitHandler = (e) => {
     e.preventDefault();

@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useAlert } from "react-alert";
-import { MDBDataTable } from "mdbreact";
+import { toast } from "sonner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faTrash } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -13,10 +12,10 @@ import {
 import MetaData from "../layouts/MetaData";
 import Loader from "../layouts/Loader";
 import Sidebar from "./Sidebar";
+import SimpleTable from "../layouts/SimpleTable";
 import "../../App.css";
 
 const OrderList = () => {
-  const alert = useAlert();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const DELETE_ORDER_RESET = "DELETE_ORDER_RESET";
@@ -77,13 +76,13 @@ const OrderList = () => {
             </Link>
             <button
               className="btn btn-danger py-1 px-2 ms-2"
-               onClick={() => {
+              onClick={() => {
                 if (
                   window.confirm("Are you sure you want to delete this order?")
                 ) {
                   dispatch(deleteOrder(order._id));
                 }
-              }} 
+              }}
             >
               <FontAwesomeIcon icon={faTrash} />
             </button>
@@ -98,15 +97,15 @@ const OrderList = () => {
   useEffect(() => {
     dispatch(allOrders());
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
     if (isDeleted) {
-      alert.success("Order deleted succesfully...");
+      toast.success("Order deleted succesfully...");
       dispatch({ type: DELETE_ORDER_RESET });
       navigate("/admin/orders");
     }
-  }, [dispatch, alert, error, isDeleted, navigate]);
+  }, [dispatch, error, isDeleted, navigate]);
 
   return (
     <>
@@ -120,12 +119,9 @@ const OrderList = () => {
           {loading ? (
             <Loader />
           ) : (
-            <MDBDataTable
+            <SimpleTable
               data={setOrders()}
               className="px-3"
-              bordered
-              striped
-              hover
             />
           )}
         </div>

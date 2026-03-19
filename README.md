@@ -70,12 +70,31 @@ If you use forgot-password email:
 
 ### 3) Run app
 
+Run backend and frontend in separate terminals:
+
+Terminal 1 (from repo root):
+
 ```bash
 npm run dev
 ```
 
+Terminal 2 (frontend dev server):
+
+```bash
+npm --prefix frontend run dev
+```
+
 - Backend: `http://127.0.0.1:4000`
-- Frontend (CRA): `http://127.0.0.1:3000`
+- Frontend (Vite): `http://127.0.0.1:5173`
+
+> If you see `EADDRINUSE: address already in use :::4000`, another backend process is already running.
+>
+> On Windows, find and stop it:
+>
+> ```bash
+> netstat -ano | findstr :4000
+> taskkill /PID <PID> /F
+> ```
 
 > `npm run dev` uses `DB_LOCAL_URI` by default in development.
 

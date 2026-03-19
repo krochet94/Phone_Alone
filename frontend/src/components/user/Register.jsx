@@ -1,71 +1,66 @@
 import React, { useEffect, useState } from "react";
 import "../../App.css";
 import { useNavigate } from "react-router-dom";
-import { useAlert } from "react-alert";
+import { toast } from "sonner";
 import { useDispatch, useSelector } from "react-redux";
 import MetaData from "../layouts/MetaData";
-import {
-  updateProfile,
-  loadUser,
-  clearErrors,
-} from "../../actions/userActions";
+import { register, clearErrors } from "../../actions/userActions";
 
-const UpdateProfile = () => {
-  const UPDATE_PROFILE_RESET = "UPDATE_PROFILE_RESET";
+const Register = () => {
   const dispatch = useDispatch();
-  const alert = useAlert();
   const navigate = useNavigate();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
   const [avatar, setAvatar] = useState("");
   const [avatarPreview, setAvatarPreview] = useState(
     "/images/default-user_2.jpg"
   );
-  const { user } = useSelector((state) => state.auth);
-  const { error, isUpdated, loading } = useSelector((state) => state.user);
+  const { name, email, password } = user;
+  const { isAuthenticated, error, loading } = useSelector(
+    (state) => state.auth
+  );
 
   const onChange = (e) => {
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (reader.readyState === 2) {
-        setAvatarPreview(reader.result);
-        setAvatar(reader.result);
-      }
-    };
-    reader.readAsDataURL(e.target.files[0]);
+    if (e.target.name === "avatar") {
+      const reader = new FileReader();
+      reader.onload = () => {
+        if (reader.readyState === 2) {
+          setAvatarPreview(reader.result);
+          setAvatar(reader.result);
+        }
+      };
+      reader.readAsDataURL(e.target.files[0]);
+    } else {
+      setUser({ ...user, [e.target.name]: e.target.value });
+    }
   };
-  useEffect(() => {
-    if (user) {
-      setName(user.name);
-      setEmail(user.email);
-      setAvatarPreview(user.avatar.url);
-    }
-    if (error) {
-      alert.error(error);
-      dispatch(clearErrors());
-    }
-
-    if (isUpdated) {
-      alert.success("User updated successfully");
-      dispatch(loadUser());
-      navigate("/me");
-      dispatch({
-        type: UPDATE_PROFILE_RESET,
-      });
-    }
-  }, [dispatch, alert, error, isUpdated, navigate, user]);
 
   const submitHandler = (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.set("name", name);
     formData.set("email", email);
+    formData.set("password", password);
     formData.set("avatar", avatar);
-    dispatch(updateProfile(formData));
+    dispatch(register(formData));
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/");
+    }
+    if (error) {
+      toast.error(error);
+      dispatch(clearErrors());
+    }
+  }, [dispatch, error, isAuthenticated, navigate]);
+
   return (
     <>
-      <MetaData title={"Update Profile"} />
+      <MetaData title={"Register User"} />
       <div className="row wrapper">
         <div className="col-10 col-lg-5">
           <form
@@ -73,7 +68,7 @@ const UpdateProfile = () => {
             encType="multipart/form-data"
             onSubmit={submitHandler}
           >
-            <h1 className="mt-2 mb-5">Update Profile</h1>
+            <h1 className="mb-3">Register</h1>
 
             <div className="form-group">
               <label htmlFor="email_field">Name</label>
@@ -83,7 +78,7 @@ const UpdateProfile = () => {
                 className="form-control"
                 name="name"
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={onChange}
               />
             </div>
 
@@ -95,7 +90,19 @@ const UpdateProfile = () => {
                 className="form-control"
                 name="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={onChange}
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="password_field">Password</label>
+              <input
+                type="password"
+                inputId="password_field"
+                className="form-control"
+                name="password"
+                value={password}
+                onChange={onChange}
               />
             </div>
 
@@ -116,8 +123,8 @@ const UpdateProfile = () => {
                     type="file"
                     name="avatar"
                     className="custom-file-input"
-                    id="customFile"
-                    accept="image/*"
+                    inputId="customFile"
+                    accept="images/*"
                     onChange={onChange}
                   />
                   <label className="custom-file-label" htmlFor="customFile">
@@ -128,11 +135,12 @@ const UpdateProfile = () => {
             </div>
 
             <button
+              id="register_button"
               type="submit"
-              className="btn update-btn w-100 mt-4 mb-3"
+              className="btn col-12 py-3"
               disabled={loading ? true : false}
             >
-              Update
+              REGISTER
             </button>
           </form>
         </div>
@@ -141,4 +149,4 @@ const UpdateProfile = () => {
   );
 };
 
-export default UpdateProfile;
+export default Register;
