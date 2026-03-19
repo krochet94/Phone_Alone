@@ -1,13 +1,33 @@
 const mongoose = require("mongoose");
 
 let isConnected = false;
+let connectionPromise = null;
 
 const isTrue = (value) =>
   ["1", "true", "yes", "on"].includes(String(value || "").toLowerCase());
 
+const parsePositiveInt = (value, fallback) => {
+  const parsed = Number(value);
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
+};
+
+const getConnectionState = () => {
+  const readyState = mongoose.connection.readyState;
+  return {
+    readyState,
+    isConnected: isConnected && readyState === 1,
+  };
+};
+
+const isDatabaseConnected = () => getConnectionState().isConnected;
+
 const connectDatabase = () => {
-  if (isConnected) {
+  if (isDatabaseConnected()) {
     return Promise.resolve(mongoose.connection);
+  }
+
+  if (connectionPromise) {
+    return connectionPromise;
   }
 
   const isProduction =
@@ -26,11 +46,33 @@ const connectDatabase = () => {
   const sourceLabel = useAtlas || !localUri ? "DB_URI (Atlas)" : "DB_LOCAL_URI (Local)";
   console.log(`Connecting to MongoDB using ${sourceLabel}...`);
 
-  return mongoose.connect(selectedUri).then((con) => {
-    isConnected = true;
-    console.log(`MongoDB Database connected with HOST: ${con.connection.host}`);
-    return con.connection;
-  });
+  const connectionOptions = {
+    serverSelectionTimeoutMS: parsePositiveInt(
+      process.env.DB_SERVER_SELECTION_TIMEOUT_MS,
+      5000
+    ),
+    connectTimeoutMS: parsePositiveInt(process.env.DB_CONNECT_TIMEOUT_MS, 5000),
+    socketTimeoutMS: parsePositiveInt(process.env.DB_SOCKET_TIMEOUT_MS, 45000),
+  };
+
+  connectionPromise = mongoose
+    .connect(selectedUri, connectionOptions)
+    .then((con) => {
+      isConnected = true;
+      console.log(`MongoDB Database connected with HOST: ${con.connection.host}`);
+      return con.connection;
+    })
+    .catch((error) => {
+      isConnected = false;
+      throw error;
+    })
+    .finally(() => {
+      connectionPromise = null;
+    });
+
+  return connectionPromise;
 };
 
 module.exports = connectDatabase;
+module.exports.isDatabaseConnected = isDatabaseConnected;
+module.exports.getConnectionState = getConnectionState;
